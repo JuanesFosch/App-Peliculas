@@ -1,0 +1,4 @@
+Django==4.2
+django-bootstrap4==23.1
+requests==2.31.0
+whitenoise==6.4.0

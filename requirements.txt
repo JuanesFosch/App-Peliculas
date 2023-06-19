@@ -2,3 +2,10 @@ Django==4.2
 django-bootstrap4==23.1
 requests==2.31.0
 whitenoise==6.4.0
+
+
+completa=['The Batman', ['apple', 'hbo'], 'Batman', ['hbo'], 'El caballero oscuro: La leyenda renace', ['apple', 'hbo'],
+         'Batman vuelve', ['hbo'], 'Batman y Robin', ['hbo'], 'Batman Forever', ['apple', 'hbo'], 'Batman Begins', ['apple', 'hbo'], 
+         'Batman: La broma asesina', ['apple', 'hbo'], 'El hijo de Batman', ['apple', 'hbo'], 'El caballero oscuro', ['hbo'], 
+         'Batman: Capucha Roja', ['hbo'], 'Batman Ninja', ['apple', 'hbo'], 'Batman: Hush', ['apple', 'hbo'], 'Batman: Año Uno', ['hbo'], 
+         'Batman: La máscara del fantasma', ['hbo']]

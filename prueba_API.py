@@ -67,14 +67,23 @@ response = requests.get(url_título, headers=headers, params=querystring)
 
 
 lista= response.json()
-
+context= {}
+nombres=[]
+plataformas=[]
 for i in lista['result']:     # CON ESTO SE OBTIENE LA PLATAFORMA DONDE ESTÁ
     if i['streamingInfo'] != {}:
-        título= i['title']
-        print(título)
+        títulos= i['title']
+        #print(títulos)
+        nombres.append(títulos)
         plataforma= i['streamingInfo']['ar'].keys()
         #print(plataforma)
         valores= list(plataforma)
-        for título in valores:
-            print(título.title())
-
+        print(valores)
+        plataformas.append(valores)
+        #for título in valores:
+            #print(título.title())
+context['nombres']= nombres
+context['plataformas'] = plataformas
+#print(context)
+for a,b in context.values():
+    print(a,b)

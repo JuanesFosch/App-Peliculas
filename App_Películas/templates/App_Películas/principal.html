@@ -22,29 +22,31 @@
 
     <br /><br /> <br>
     <div class="container">
-    <div id="jumbotron" class="jumbotron" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+     <div id="jumbotron" class="jumbotron" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
       <h1 class="display-5">App para buscar películas y su disponibilidad en plataformas de streaming </h1>
       <h5>Usando lenguaje Python y Framework Django </h5>
-    </div>
+     </div>
     </div>
 
 
 
     
     <div class="container">
-        <h1 style="color: #199ccc; margin-bottom: 20px; ">Películas y dónde verlas</h1>
+        <h1 style="color: #199ccc; margin-bottom: 20px;">Películas y dónde verlas</h1>
         <form method="post" class="d-flex" style="margin-bottom: 20px; width: 50%">
             {% csrf_token %}
             <input class="form-control me-sm-2" type="text" name="título" placeholder="Escribir título de la peli">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
         </form>
         <div class="card-container">
-            {% for película in lista %}
+            {% for título, plataformas in completo.items %}
             <div class="card bg-info text-white">
-                <div class="card-header">Header</div>
+                <div class="card-header">{{ título }}</div>
                 <div class="card-body">
                     <ul>
-                        <li>{{ película }}</li>
+                        {% for plataforma in plataformas %}
+                        <li>{{ plataforma|upper }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

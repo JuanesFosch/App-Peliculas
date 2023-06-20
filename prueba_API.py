@@ -63,10 +63,11 @@ headers = {
 	"X-RapidAPI-Host": "streaming-availability.p.rapidapi.com"
 }
 
-response = requests.get(url_título, headers=headers, params=querystring)
+response = requests.get(url_título, headers=headers, params=querystring)  # Esto sólo da el resultado de la respuesta HTTP (200 por ejemplo)
 
 
 lista= response.json()
+print(lista)
 context= {}
 nombres=[]
 plataformas=[]
@@ -84,6 +85,24 @@ for i in lista['result']:     # CON ESTO SE OBTIENE LA PLATAFORMA DONDE ESTÁ
             #print(título.title())
 context['nombres']= nombres
 context['plataformas'] = plataformas
-#print(context)
-for a,b in context.values():
-    print(a,b)
+print(context)
+#for a,b in context.values():
+    #print(a,b)
+
+completa=['The Batman', ['apple', 'hbo'], 'Batman', ['hbo'], 'El caballero oscuro: La leyenda renace', ['apple', 'hbo'],
+         'Batman vuelve', ['hbo'], 'Batman y Robin', ['hbo'], 'Batman Forever', ['apple', 'hbo'], 'Batman Begins', ['apple', 'hbo'], 
+         'Batman: La broma asesina', ['apple', 'hbo'], 'El hijo de Batman', ['apple', 'hbo'], 'El caballero oscuro', ['hbo'], 
+         'Batman: Capucha Roja', ['hbo'], 'Batman Ninja', ['apple', 'hbo'], 'Batman: Hush', ['apple', 'hbo'], 'Batman: Año Uno', ['hbo'], 
+         'Batman: La máscara del fantasma', ['hbo']]
+
+#-----Diccionario de prueba igual que el JSON, para poder avanzar con el render----
+query= {'result': [{'type': 'movie', 'title': 'The Batman','streamingInfo': {'ar': {'apple': [{'type': 'rent', 'quality': 'uhd',}],
+        'hbo':[{'type': 'buy', 'quality': 'hd',}]}}
+        },
+        {'type': 'movie', 'title': 'Batman','streamingInfo': {'ar': {'hbo': [{'type': 'rent', 'quality': 'uhd',}],
+        }}
+        ,},
+        {'type': 'movie', 'title': 'El caballero oscuro: La leyenda renace','streamingInfo': {'ar': {'apple': [{'type': 'buy', 'quality': 'hd',}],
+        'hbo':[{'type': 'rent', 'quality': '4K',}]}}}
+        ]}
+#--------------------------------------------------------------------------------------------

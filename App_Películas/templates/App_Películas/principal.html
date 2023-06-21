@@ -1,5 +1,6 @@
 
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,20 +40,27 @@
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
         </form>
         <div class="card-container">
-            {% for título, plataformas in completo.items %}
+        {% for título, plataformas in completo.items %}
             <div class="card bg-info text-white">
                 <div class="card-header">{{ título }}</div>
                 <div class="card-body">
-                    <ul>
-                        {% for plataforma in plataformas %}
-                        <li>{{ plataforma|upper }}</li>
+                    <img src= "{{ plataformas.0.poster }}">    
+                    <ul> Plataformas disponibles y rating de IMDB:
+                    {% for plataforma in plataformas %}
+                        {% for plataforma in plataforma.plataformas %}
+                            
+                                <li> {{ plataforma|upper }}</li>
+                            
                         {% endfor %}
+                        <li>Rating: {{ plataforma.rating }}</li>
+                        
+                    {% endfor %}   
                     </ul>
                 </div>
             </div>
-            {% empty %}
+        {% empty %}
             <p>No hay películas.</p>
-            {% endfor %}
+        {% endfor %}
         </div>
     </div>
  </body>

@@ -25,14 +25,12 @@ def principal(request):
                 título = i['title']    # Se obtienen los títulos de las películas relacionados a la búsqueda
                 plataforma = i['streamingInfo']['ar'].keys()   # Se obtienen las plataformas disponibles en Argentina para esa película 
                 valores = [p.title() for p in plataforma]    # Se convierten los nombres de las plataformas a mayúsculas
-                
+                rating=i['imdbRating']          #  Se obtienen los puntajes del sitio IMDB.
+                poster=i['posterURLs']['185']   #  Se obtiene un poster de tamaño adecuado.
                 if título not in completo:
                     completo[título] = []   # Si el título no existe en el diccionario 'completo', se agrega como una clave con una lista vacía
                     
-                for p in valores:
-                    if p not in completo[título]:
-                        completo[título].append(p)  # Se agrega cada plataforma al título correspondiente en el diccionario completo, antes verificando si existen para evitar duplicados.
-
+                completo[título].append({'plataformas': valores, 'rating': rating, 'poster': poster})
     context['completo'] = completo      # Se agrega el diccionario 'completo' al contexto, para renderizar en el template.
 
     return render(request, "App_Películas/principal.html",context)

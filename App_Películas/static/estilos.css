@@ -1,0 +1,73 @@
+
+
+body{
+  margin:0;
+  font-family:var(--bs-body-font-family);
+  font-size:var(--bs-body-font-size);
+  font-weight:var(--bs-body-font-weight);
+  line-height:var(--bs-body-line-height);
+  color:var(--bs-body-color);
+  text-align:var(--bs-body-text-align);
+  background-color:var(--bs-body-bg);
+  -webkit-text-size-adjust:100%;
+  -webkit-tap-highlight-color:transparent;
+  background-image: url('sala-de-cine.png');
+}
+
+.jumbotron { background-color: rgb(221, 221, 221, 0.9);
+  border-radius: 5px;
+  border: solid rgba(0,0,0,.15);
+  border-width: 2px;
+  max-width:75%;
+  margin-left: 150px;
+}
+
+.jumbotron p{
+  color: rgb(94, 94, 94);
+}
+
+.container button{
+border: solid rgba(0,0,0,.15);
+border-width: 3px;
+}
+.container h1 {
+  color: rgb(253, 253, 253);
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 20px;
+
+  }
+
+.card {
+    flex: 0 0 calc(33.33% - 20px);
+    margin-bottom: 20px;
+    background-color: rgb(189, 34, 34);
+    max-width: 280px;
+}
+
+.card-header{
+  padding:var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
+  margin-bottom:0;color:var(--bs-card-cap-color);
+  background-color: #316e99;
+  border-bottom:var(--bs-card-border-width) solid var(--bs-card-border-color);
+  font-size: 23px;
+}
+
+.card-body {
+  background-color: rgb(26, 25, 25,0.8)
+}
+
+.card-body h4{
+  font-size: 16px;
+  text-align: left;
+  margin-top: 12px;
+}
+img,svg{
+  vertical-align:middle;
+  padding-left: 30px;
+}

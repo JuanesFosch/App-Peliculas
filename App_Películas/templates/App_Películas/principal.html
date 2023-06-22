@@ -1,0 +1,66 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'bootstrap.min.solar.css' %}">
+  <link rel="stylesheet" href="{% static 'estilos.css' %}">
+  <title>App Películas </title>
+</head>
+
+<body>
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <div class="container">
+        <a href="../" class="navbar-brand">App Películas <span style="color: #5f9cc8;"> <strong> - Django
+              Framework</strong>
+          </span> </a>
+      </div>
+    </div>
+
+    <br /><br /> <br>
+    <div class="container">
+     <div id="jumbotron" class="jumbotron" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+      <h1 class="display-5"><p>App para buscar películas y su disponibilidad</p>  
+        <p>en plataformas de streaming</p></h1>
+    </div>
+    </div>
+
+    
+    <div class="container">
+        <h1 style=" margin-bottom: 20px;">Películas y dónde verlas</h1>
+        <form method="post" class="d-flex" style="margin-bottom: 20px; width: 50%">
+            {% csrf_token %}
+            <input class="form-control me-sm-2" type="text" style="background-color:rgb(221, 221, 221); font-size: 25px ; border-width: 3px;" name="título" placeholder="Escribir título de la peli">
+            <button class="btn btn-secondary my-2 my-sm-0" style="font-size: 22px; border-width: 3px;" type="submit">Buscar</button>
+        </form>
+        <div class="card-container">
+        {% for título, plataformas in completo.items %}
+            <div class="card bg-info text-white">
+                <div class="card-header">{{ título }}</div>
+                <div class="card-body">
+                    <img src= "{{ plataformas.0.poster }}">
+                    <h4>Plataformas disponibles y rating de IMDB:</h4>    
+                    <ul> 
+                    {% for plataforma in plataformas %}
+                        {% for plataforma in plataforma.plataformas %}
+                            
+                                <li> {{ plataforma|upper }}</li>
+                            
+                        {% endfor %}
+                        <li>Rating: {{ plataforma.rating }}</li>
+                        
+                    {% endfor %}   
+                    </ul>
+                </div>
+            </div>
+        {% empty %}
+            <p style="color:  rgb(253, 253, 253);font-size: 20px; text-decoration: underline;">No hay películas.</p>
+        {% endfor %}
+        </div>
+    </div>
+ </body>
+</html>

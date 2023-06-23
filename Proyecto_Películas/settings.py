@@ -11,21 +11,24 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c^fupku=w35uop#@r#dwcsi-y%_xn%rjd$-w5012-pgbk4yc2('
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =  os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,3 +128,12 @@ STATIC_ROOT = BASE_DIR / 'App_Películas/static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT')
+
+CSRF_TRUSTED_ORIGINS = ['https://proyecto-peliculas.fly.dev',
+                        ]
+
+CSRF_COOKIE_SECURE= os.getenv('CSRF_COOKIE_SECURE')
+
+SESSION_COOKIE_SECURE= os.getenv('SESSION_COOKIE_SECURE')

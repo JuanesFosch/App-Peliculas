@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for proyecto-peliculas on 2023-06-22T20:49:03-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "proyecto-peliculas"
+primary_region = "scl"
+console_command = "/code/manage.py shell"
+
+[env]
+  PORT = "8000"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[statics]]
+  guest_path = "/code/static"
+  url_prefix = "/static/"

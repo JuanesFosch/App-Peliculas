@@ -2,10 +2,17 @@ Django==4.2
 django-bootstrap4==23.1
 requests==2.31.0
 whitenoise==6.4.0
-
-
-completa=['The Batman', ['apple', 'hbo'], 'Batman', ['hbo'], 'El caballero oscuro: La leyenda renace', ['apple', 'hbo'],
-         'Batman vuelve', ['hbo'], 'Batman y Robin', ['hbo'], 'Batman Forever', ['apple', 'hbo'], 'Batman Begins', ['apple', 'hbo'], 
-         'Batman: La broma asesina', ['apple', 'hbo'], 'El hijo de Batman', ['apple', 'hbo'], 'El caballero oscuro', ['hbo'], 
-         'Batman: Capucha Roja', ['hbo'], 'Batman Ninja', ['apple', 'hbo'], 'Batman: Hush', ['apple', 'hbo'], 'Batman: Año Uno', ['hbo'], 
-         'Batman: La máscara del fantasma', ['hbo']]
+gunicorn==20.1.0
+asgiref==3.7.2
+beautifulsoup4==4.12.2
+certifi==2023.5.7
+charset-normalizer==3.1.0
+idna==3.4
+pip==23.1.2
+python-dotenv==1.0.0
+setuptools==65.5.0
+soupsieve==2.4.1
+sqlparse==0.4.4
+tzdata==2023.3
+urllib3==2.0.3
+whitenoise==6.4.0

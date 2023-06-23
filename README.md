@@ -1,7 +1,7 @@
 
 > Español
 
-## App-Peliculas
+## App-Películas
 
 El objetivo de este proyecto es aprender y practicar consultas a una API para el desarrollo web, está hecho con Python en Django, formateado en CSS y desplegado en Fly.io. 
 

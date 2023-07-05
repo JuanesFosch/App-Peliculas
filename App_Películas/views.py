@@ -20,17 +20,21 @@ def principal(request):
         response = requests.get(url_título, headers=headers, params=querystring)
         lista= response.json()
 
-        for i in lista['result']:
-            if i['streamingInfo'] != {}:
-                título = i['title']    # Se obtienen los títulos de las películas relacionados a la búsqueda
-                plataforma = i['streamingInfo']['ar'].keys()   # Se obtienen las plataformas disponibles en Argentina para esa película 
-                valores = [p.title() for p in plataforma]    # Se convierten los nombres de las plataformas a mayúsculas
-                rating=i['imdbRating']          #  Se obtienen los puntajes del sitio IMDB.
-                poster=i['posterURLs']['185']   #  Se obtiene un poster de tamaño adecuado.
-                if título not in completo:
-                    completo[título] = []   # Si el título no existe en el diccionario 'completo', se agrega como una clave con una lista vacía
-                    
-                completo[título].append({'plataformas': valores, 'rating': rating, 'poster': poster})
+        try:                # Manejo de error por alcanzar el límite diario de consultas a la API
+            for i in lista['result']:
+                if i['streamingInfo'] != {}:
+                    título = i['title']    # Se obtienen los títulos de las películas relacionados a la búsqueda
+                    plataforma = i['streamingInfo']['ar'].keys()   # Se obtienen las plataformas disponibles en Argentina para esa película 
+                    valores = [p.title() for p in plataforma]    # Se convierten los nombres de las plataformas a mayúsculas
+                    rating=i['imdbRating']          #  Se obtienen los puntajes del sitio IMDB.
+                    poster=i['posterURLs']['185']   #  Se obtiene un poster de tamaño adecuado.
+                    if título not in completo:
+                        completo[título] = []   # Si el título no existe en el diccionario 'completo', se agrega como una clave con una lista vacía
+                        
+                    completo[título].append({'plataformas': valores, 'rating': rating, 'poster': poster})
+        except KeyError:
+            return render(request, "App_Películas/error_límite.html",context)
+
     context['completo'] = completo      # Se agrega el diccionario 'completo' al contexto, para renderizar en el template.
 
     return render(request, "App_Películas/principal.html",context)
